@@ -1,75 +1,80 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public AudioClip deathClip; // »ç¸Á½Ã Àç»ıÇÒ ¿Àµğ¿ÀÅ¬¸³
-    public float jumpForce = 700f; // Á¡ÇÁ Èû
+    public AudioClip deathClip; // ì‚¬ë§ì‹œ ì¬ìƒí•  ì˜¤ë””ì˜¤í´ë¦½
+    public float jumpForce = 700f; // ì í”„ í˜
 
-    private int jumpCount = 0; // ´©ÀûÁ¡ÇÁ¼ö(´Ù´ÜÁ¡ÇÁ¿ë)
-    private bool isGrounded = false; // Á¢Áö ¿©ºÎ
-    private bool isDead = false; // »ç¸Á ¿©ºÎ
+    private int jumpCount = 0; // ëˆ„ì ì í”„ìˆ˜(ë‹¤ë‹¨ì í”„ìš©)
+    private bool isGrounded = false; // ì ‘ì§€ ì—¬ë¶€
+    private bool isDead = false; // ì‚¬ë§ ì—¬ë¶€
 
-    // ÄÄÆ÷³ÍÆ®
-    private Rigidbody2D playerRigidbody; // ¸®Áöµå¹Ùµğ
-    private Animator animator; // ¾Ö´Ï¸ŞÀÌÅÍ
-    private AudioSource playerAudio; // ¿Àµğ¿À¼Ò½º
+    // ì‚¬ìš©í•  ì»´í¬ë„ŒíŠ¸ì˜ ë³€ìˆ˜
+    private Rigidbody2D playerRigidbody; // ë¦¬ì§€ë“œë°”ë””
+    private Animator animator; // ì• ë‹ˆë©”ì´í„°
+    private AudioSource playerAudio; // ì˜¤ë””ì˜¤ì†ŒìŠ¤
 
-    private void Start() // ÃÊ±âÈ­
+    private void Start() // ì´ˆê¸°í™”
     {
+        // ê²Œì„ ì˜¤ë¸Œì íŠ¸ë¡œë¶€í„° ì‚¬ìš©í•  ì»´í¬ë„ŒíŠ¸ë“¤ì„ ê°€ì ¸ì™€ì„œ ë³€ìˆ˜ì— í• ë‹¹
         playerRigidbody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         playerAudio = GetComponent<AudioSource>();
     }
 
-    private void Update() // ÀÔ·Â°¨Áö Á¡ÇÁÃ³¸®
+    private void Update() // ì…ë ¥ê°ì§€ ì í”„ì²˜ë¦¬
     {
         if(isDead)
         {
-            return; // »ç¸Á½Ã ´õÀÌ»ó Ã³¸®¸¦ ÁøÇàÇÏÁö ¾Ê°í Á¾·á
+            return; // ì‚¬ë§ì‹œ ë”ì´ìƒ ì²˜ë¦¬ë¥¼ ì§„í–‰í•˜ì§€ ì•Šê³  ì¢…ë£Œ
         }
-        if (Input.GetMouseButtonDown(0) && jumpCount < 2) // ¿ŞÅ¬¸¯ && ÃÖ´ëÁ¡ÇÁÈ½¼ö ¹Ì¸¸ÀÌ¸é
+        if (Input.GetMouseButtonDown(0) && jumpCount < 2) // ì™¼í´ë¦­ && ìµœëŒ€ì í”„íšŸìˆ˜ ë¯¸ë§Œì´ë©´
         {
-            jumpCount++; // Á¡ÇÁ¼ö Áõ°¡
-            playerRigidbody.velocity = Vector2.zero; // Á¡ÇÁÁ÷Àü ¼ø°£¼Óµµ¸¦ 0À¸·Î º¯°æ
-            playerRigidbody.AddForce(new Vector2(0, jumpForce)); // ¸®Áöµå¹Ùµğ¿¡ »ó¹æÇâ Èû ÁÖ±â
-            playerAudio.Play(); // ¿Àµğ¿À¼Ò½º Àç»ı
+            jumpCount++; // ì í”„ìˆ˜ ì¦ê°€
+            playerRigidbody.velocity = Vector2.zero; // ì í”„ì§ì „ ìˆœê°„ì†ë„ë¥¼ 0ìœ¼ë¡œ ë³€ê²½
+            playerRigidbody.AddForce(new Vector2(0, jumpForce)); // ë¦¬ì§€ë“œë°”ë””ì— ìƒë°©í–¥ í˜ ì£¼ê¸°
+            playerAudio.Play(); // ì˜¤ë””ì˜¤ì†ŒìŠ¤ ì¬ìƒ
         }
         else if (Input.GetMouseButtonUp(0)&&playerRigidbody.velocity.y>0)
-        { // ¸¶¿ì½º ¿ŞÂÊ ¹öÆ°¿¡¼­ ¼ÕÀ» ¶¼´Â ¼ø°£ && ¼ÓµµÀÇ y°ªÀÌ ¾ç¼ö (»ó½ÂÁß) ¶ó¸é
-            playerRigidbody.velocity = playerRigidbody.velocity * 0.5f; // ¼Óµµ¸¦ Àı¹İÀ¸·Î º¯°æ
+        { // ë§ˆìš°ìŠ¤ ì™¼ìª½ ë²„íŠ¼ì—ì„œ ì†ì„ ë–¼ëŠ” ìˆœê°„ && ì†ë„ì˜ yê°’ì´ ì–‘ìˆ˜ (ìƒìŠ¹ì¤‘) ë¼ë©´
+            playerRigidbody.velocity = playerRigidbody.velocity * 0.5f; // ì†ë„ë¥¼ ì ˆë°˜ìœ¼ë¡œ ë³€ê²½
         }
 
         animator.SetBool("Grounded", isGrounded);
-        // ¾Ö´Ï¸ŞÀÌÅÍÀÇ Gronded ÆÄ¶ó¹ÌÅÍ¸¦ isGrounded °ªÀ¸·Î °»½Å
+        // ì• ë‹ˆë©”ì´í„°ì˜ Gronded íŒŒë¼ë¯¸í„°ë¥¼ isGrounded ê°’ìœ¼ë¡œ ê°±ì‹ 
     }
 
-    private void Die() // »ç¸Á Ã³¸®
+    private void Die() // ì‚¬ë§ ì²˜ë¦¬
     {
-        animator.SetTrigger("Die"); // ¾Ö´Ï¸ŞÀÌÅÍÀÇ Die Æ®¸®°Å ÆÄ¶ó¹ÌÅÍ¸¦ ¼Â
-        // Æ®¸®°Å Å¸ÀÔÀÇ ÆÄ¶ó¹ÌÅÍ´Â ¼ÂÇÏ´Â Áï½Ã true°¡ µÇ¾ú´Ù°¡ °ğ¹Ù·Î false°¡ µÇ±â¿¡ º°µµÀÇ°ª ÁöÁ¤X
-        playerAudio.clip = deathClip; // ¿Àµğ¿À ¼Ò½º¿¡ ÇÒ´çµÈ ¿Àµğ¿À Å¬¸³À» deathClipÀ¸·Î º¯°æ
-        playerAudio.Play(); // »ç¸ÁÈ¿°úÀ½ Àç»ı
+        animator.SetTrigger("Die"); // ì• ë‹ˆë©”ì´í„°ì˜ Die íŠ¸ë¦¬ê±° íŒŒë¼ë¯¸í„°ë¥¼ ì…‹
+        // íŠ¸ë¦¬ê±° íƒ€ì…ì˜ íŒŒë¼ë¯¸í„°ëŠ” ì…‹í•˜ëŠ” ì¦‰ì‹œ trueê°€ ë˜ì—ˆë‹¤ê°€ ê³§ë°”ë¡œ falseê°€ ë˜ê¸°ì— ë³„ë„ì˜ê°’ ì§€ì •X
+        playerAudio.clip = deathClip; // ì˜¤ë””ì˜¤ ì†ŒìŠ¤ì— í• ë‹¹ëœ ì˜¤ë””ì˜¤ í´ë¦½ì„ deathClipìœ¼ë¡œ ë³€ê²½
+        playerAudio.Play(); // ì‚¬ë§íš¨ê³¼ìŒ ì¬ìƒ
 
-        playerRigidbody.velocity = Vector2.zero; // ¼Óµµ¸¦ 0À¸·Î º¯°æ
-        isDead = true; // »ç¸Á¿©ºÎ Æ®·ç
+        playerRigidbody.velocity = Vector2.zero; // ì†ë„ë¥¼ 0ìœ¼ë¡œ ë³€ê²½
+        isDead = true; // ì‚¬ë§ì—¬ë¶€ íŠ¸ë£¨
     }
 
-    private void OnTriggerEnter2D(Collider2D other) // Àå¾Ö¹° Ãæµ¹ °¨Áö
+    private void OnTriggerEnter2D(Collider2D other) // ì¥ì• ë¬¼ ì¶©ëŒ ê°ì§€
     {
         if (other.tag == "Dead" && !isDead)
-        {
+        { // ì¶©ëŒí•œ ìƒëŒ€ì˜ íƒœê·¸ê°€ Dead && ì•„ì§ ì•ˆì£½ì—ˆìœ¼ë©´(ì‚¬ë§ì—¬ë¶€ í´ìŠ¤) Die()ì‹¤í–‰
             Die();
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision) // Á¢ÁöO °¨Áö Ã³¸®
+    private void OnCollisionEnter2D(Collision2D collision) // ì ‘ì§€O ê°ì§€ ì²˜ë¦¬
     {
-        isGrounded = true;
-        jumpCount = 0;
+        if (collision.contacts[0].normal.y > 0.7f)
+        { // ì–´ë–¤ ì½œë¼ì´ë”ì™€ ë‹¿ì•˜ìœ¼ë©°, ì¶©ëŒ í‘œë©´ì´ ìœ„ìª½ì„ ë³´ê³  ìˆìœ¼ë©´
+            isGrounded = true;
+            jumpCount = 0;
+            // ì ‘ì§€ì—¬ë¶€ íŠ¸ë£¨, ì í”„ì¹´ìš´íŠ¸ ë¦¬ì…‹
+        }
     }
 
-    private void OnCollisionExit2D(Collision2D collision) // Á¢ÁöX °¨Áö Ã³¸®
-    {        
-
+    private void OnCollisionExit2D(Collision2D collision) // ì ‘ì§€X ê°ì§€ ì²˜ë¦¬
+    { // ì–´ë–¤ ì½œë¼ì´ë”ì™€ ë–¨ì–´ì§„ ê²½ìš° ì ‘ì§€ì—¬ë¶€ í´ìŠ¤
+        isGrounded = false;
     }
 }
