@@ -1,39 +1,43 @@
-ï»¿using UnityEngine;
+using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    //ê²Œì„ì˜¤ë²„ ìƒíƒœë¥¼ í‘œí˜„í•˜ê³  ê²Œì„ì ìˆ˜ì™€ UIë¥¼ ê´€ë¦¬í•˜ëŠ” ê²Œì„ë§¤ë‹ˆì €
-    //ì”¬ì—ëŠ” ë‹¨ í•˜ë‚˜ì˜ ê²Œì„ ë§¤ë‹ˆì €ë§Œ ì¡´ì¬í•  ìˆ˜ ìˆìŒ
-    public static GameManager instance; // ì‹±ê¸€í„´ì„ í• ë‹¹í•  ì „ì—­ ë³€ìˆ˜
-    public bool isGameover = false; // ê²Œì„ì˜¤ë²„ ì—¬ë¶€ = í´ìŠ¤
-    public TextMeshProUGUI scoreText; // ì ìˆ˜ë¥¼ ì¶œë ¥í•  UI í…ìŠ¤íŠ¸
-    public GameObject gameoverUI; // ê²Œì„ì˜¤ë²„ì‹œ í™œì„±í™”í•  UI ê²Œì„ ì˜¤ë¸Œì íŠ¸
-    private int score = 0; // ê²Œì„ì ìˆ˜
+    //°ÔÀÓ¿À¹ö »óÅÂ¸¦ Ç¥ÇöÇÏ°í °ÔÀÓÁ¡¼ö¿Í UI¸¦ °ü¸®ÇÏ´Â °ÔÀÓ¸Å´ÏÀú
+    //¾À¿¡´Â ´Ü ÇÏ³ªÀÇ °ÔÀÓ ¸Å´ÏÀú¸¸ Á¸ÀçÇÒ ¼ö ÀÖÀ½
+    public static GameManager instance; // ½Ì±ÛÅÏÀ» ÇÒ´çÇÒ Àü¿ª º¯¼ö
 
-    void Awke()
-    { //ê²Œì„ ì‹œì‘ê³¼ ë™ì‹œì— ì‹±ê¸€í„´ êµ¬ì„±
-        if (instance==null)
-        { // ì‹±ê¸€í„´ ë³€ìˆ˜ê°€ ë¹„ì–´ìˆìœ¼ë©´ ìì‹ ì„ í• ë‹¹
+    public bool isGameover = false; // °ÔÀÓ¿À¹ö ¿©ºÎ = Æú½º
+    public TextMeshProUGUI scoreText; // Á¡¼ö¸¦ Ãâ·ÂÇÒ UI ÅØ½ºÆ®
+    public GameObject gameoverUI; // °ÔÀÓ¿À¹ö½Ã È°¼ºÈ­ÇÒ UI °ÔÀÓ ¿ÀºêÁ§Æ®
+
+    private int score = 0; // °ÔÀÓÁ¡¼ö
+    
+    void Awake()
+    { //°ÔÀÓ ½ÃÀÛ°ú µ¿½Ã¿¡ ½Ì±ÛÅÏ ±¸¼º
+        if (instance == null)
+        { // ½Ì±ÛÅÏ º¯¼ö°¡ ºñ¾îÀÖÀ¸¸é ÀÚ½ÅÀ» ÇÒ´ç
             instance = this;
+            Debug.LogWarning("°ÔÀÓ¸Å´ÏÀú ÇÒ´ç");
         }
         else
-        { // ì•„ë‹ˆë©´ íŒŒê´´
-            Debug.LogWarning("ë‘ê°œ ì´ìƒì˜ ê²Œì„ë§¤ë‹ˆì € ì¡´ì¬");
-            Destroy(this.gameObject); //this ë¹¼ë„ ë¼ì§€ë§Œ ì¶”ê°€í•˜ë©´ ëª…í™•ì„± ì—…
+        { // ¾Æ´Ï¸é ÆÄ±«
+            Debug.LogWarning("µÎ°³ ÀÌ»óÀÇ °ÔÀÓ¸Å´ÏÀú Á¸Àç");
+            Destroy(this.gameObject); //this »©µµ µÅÁö¸¸ Ãß°¡ÇÏ¸é ¸íÈ®¼º ¾÷
         }
     }
-
+    
     void Update()
-    { // ê²Œì„ì˜¤ë²„ ì¤‘ ì¬ì‹œì‘ ì²˜ë¦¬
-        if(isGameover && Input.GetMouseButtonDown(0))
+    { // °ÔÀÓ¿À¹ö Áß Àç½ÃÀÛ Ã³¸®
+        if (isGameover && Input.GetMouseButtonDown(0))
+        {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
     }
 
     public void AddScore(int newScore)
-    { // ì ìˆ˜ì¦ê°€ ë©”ì„œë“œ
+    { // Á¡¼öÁõ°¡ ¸Ş¼­µå
         if(!isGameover)
         {
             score += newScore;
