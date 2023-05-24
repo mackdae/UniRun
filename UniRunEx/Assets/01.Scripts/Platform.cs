@@ -1,18 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class Platform : MonoBehaviour
 {
-    public GameObject[] obstacles; // Àå¾Ö¹° ¿ÀºêÁ§Æ®µé
-    private bool stepped = false; // ¹âÀ½ ¿©ºÎ
+    public GameObject[] obstacles; // ì¥ì• ë¬¼ ì˜¤ë¸Œì íŠ¸ë“¤
+    private bool stepped = false; // ë°ŸìŒ ì—¬ë¶€
 
-    private void OnEnable() // ÄÄÆ÷³ÍÆ®°¡ È°¼ºÈ­µÉ ¶§¸¶´Ù ½ÇÇàÇÏ´Â ¸Ş¼­µå // ¿ÀºêÁ§Æ® È°¼ºÈ­½Ã¿¡µµ ¹ßµ¿
-    { // ¹ßÆÇ ¸®¼ÂÃ³¸®
-        stepped = false; // ¹âÈû ¸®¼Â
-        for (int i = 0; i < obstacles.Length; i++) // Àå¾Ö¹° ¼ö¸¸Å­ ·çÇÁ
+    private void OnEnable() // ì»´í¬ë„ŒíŠ¸ê°€ í™œì„±í™”ë  ë•Œë§ˆë‹¤ ì‹¤í–‰í•˜ëŠ” ë©”ì„œë“œ // ì˜¤ë¸Œì íŠ¸ í™œì„±í™”ì‹œì—ë„ ë°œë™
+    { // ë°œíŒ ë¦¬ì…‹ì²˜ë¦¬
+        stepped = false; // ë°Ÿí˜ ë¦¬ì…‹
+        for (int i = 0; i < obstacles.Length; i++) // ì¥ì• ë¬¼ ìˆ˜ë§Œí¼ ë£¨í”„
         {
-            if (Random.Range(0,3)==0) // ÇöÀç ¼ø¹øÀÇ Àå¾Ö¹°À» 1/3È®·ü·Î È°¼ºÈ­
+            if (Random.Range(0,3)==0) // í˜„ì¬ ìˆœë²ˆì˜ ì¥ì• ë¬¼ì„ 1/3í™•ë¥ ë¡œ í™œì„±í™”
             {
                 obstacles[i].SetActive(true);
             }
@@ -24,12 +22,12 @@ public class Platform : MonoBehaviour
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
-    { // ÇÃ·¹ÀÌ¾î Ä³¸¯ÅÍ°¡ ÀÚ½ÅÀ» ¹â¾ÒÀ» ¶§ Á¡¼ö Ãß°¡ Ã³¸®
+    { // í”Œë ˆì´ì–´ ìºë¦­í„°ê°€ ìì‹ ì„ ë°Ÿì•˜ì„ ë•Œ ì ìˆ˜ ì¶”ê°€ ì²˜ë¦¬
         if(collision.collider.tag == "Player" && !stepped)
-        { // Ãæµ¹ÇÑ »ó´ëÀÇ ÅÂ±×°¡ ÇÃ·¹ÀÌ¾îÀÌ°í ÀÌÀü¿¡ ¹âÁö ¾Ê¾Ò´Ù¸é
+        { // ì¶©ëŒí•œ ìƒëŒ€ì˜ íƒœê·¸ê°€ í”Œë ˆì´ì–´ì´ê³  ì´ì „ì— ë°Ÿì§€ ì•Šì•˜ë‹¤ë©´
             stepped = true;
             GameManager.instance.AddScore(1);
-            // Á¡¼ö¸¦ Ãß°¡ÇÏ°í ¹âÈû¿©ºÎ Æ®·ç
+            // ì ìˆ˜ë¥¼ ì¶”ê°€í•˜ê³  ë°Ÿí˜ì—¬ë¶€ íŠ¸ë£¨
         }
     }
 }
