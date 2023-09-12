@@ -24,10 +24,12 @@ public class PlayerController : MonoBehaviour
 
     private void Update() // 입력감지 점프처리
     {
-        if(isDead)
-        {
+        if (Time.timeScale != 0)
+            return; // 일시정지시 처리X 즉시종료
+
+        if (isDead)
             return; // 사망시 더이상 처리를 진행하지 않고 종료
-        }
+
         if (Input.GetMouseButtonDown(0) && jumpCount < 2) // 왼클릭 && 최대점프횟수 미만이면
         {
             jumpCount++; // 점프수 증가

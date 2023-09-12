@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using System.Collections;
+using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
@@ -16,6 +18,7 @@ public class GameManager : MonoBehaviour
     
     void Awake()
     { //게임 시작과 동시에 싱글턴 구성
+        Time.timeScale = 1;
         if (instance == null)
         { // 싱글턴 변수가 비어있으면 자신을 할당
             instance = this;
@@ -50,4 +53,31 @@ public class GameManager : MonoBehaviour
         isGameover = true;
         gameoverUI.SetActive(true);
     }
+
+    public GameObject menuPanel;
+    public bool menuActive;
+
+    public void MenuClick()
+    {
+        if(!menuActive)
+        {
+            menuPanel.SetActive(true);
+            Time.timeScale = 0;
+            menuActive = true;
+        }
+        else if (menuActive)
+        {
+            menuPanel.SetActive(false);
+            Time.timeScale = 1;
+            menuActive = false;
+        }
+    }
+    public void Restart() // 게임재시작
+    { SceneManager.LoadScene(SceneManager.GetActiveScene().name); }
+
+    public void Exit() // 게임종료
+    { Application.Quit(); }
+
+    public void TimeState(int time)
+    { Time.timeScale = time; }
 }

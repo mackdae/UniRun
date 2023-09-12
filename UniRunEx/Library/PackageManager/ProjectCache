@@ -5,7 +5,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638191102009164365
+      ticks: 638218889144968892
     m_Hash: 4153295679
   m_LockFileStatus:
     m_FilePath: D:/SME/Unity/UniRun/UniRunEx/Packages/packages-lock.json
@@ -13,7 +13,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638191102584038536
+      ticks: 638218889145637270
     m_Hash: 2222826759
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
@@ -107,6 +107,7 @@ m_ResolvedPackages:
     - 2.0.1
     - 2.0.3
     - 2.0.4
+    - 2.0.5
     - 2.1.0-preview.3
     - 2.1.0-preview.5
     - 2.1.0-preview.6
@@ -114,10 +115,11 @@ m_ResolvedPackages:
     - 2.0.1
     - 2.0.3
     - 2.0.4
+    - 2.0.5
     - 2.1.0-preview.3
     - 2.1.0-preview.5
     - 2.1.0-preview.6
-    verified: 2.0.4
+    verified: 2.0.5
   dependencies: []
   resolvedDependencies: []
   keywords:
@@ -320,11 +322,13 @@ m_ResolvedPackages:
     - 3.0.18
     - 3.0.20
     - 3.0.21
+    - 3.0.22
     compatible:
     - 3.0.18
     - 3.0.20
     - 3.0.21
-    verified: 3.0.21
+    - 3.0.22
+    verified: 3.0.22
   dependencies:
   - name: com.unity.ext.nunit
     version: 1.0.6
@@ -555,6 +559,7 @@ m_ResolvedPackages:
     - 1.3.2
     - 1.3.3
     - 1.3.4
+    - 1.3.5
     - 2.0.1-exp.1
     - 2.0.1-exp.2
     - 2.0.1-pre.12
@@ -567,6 +572,7 @@ m_ResolvedPackages:
     - 1.3.2
     - 1.3.3
     - 1.3.4
+    - 1.3.5
     - 2.0.1-exp.1
     - 2.0.1-exp.2
     - 2.0.1-pre.12
@@ -879,6 +885,7 @@ m_ResolvedPackages:
     - 1.8.0
     - 1.8.1
     - 1.8.2
+    - 1.8.3
     compatible:
     - 1.6.4
     - 1.6.5
@@ -892,6 +899,7 @@ m_ResolvedPackages:
     - 1.8.0
     - 1.8.1
     - 1.8.2
+    - 1.8.3
     verified: 1.6.5
   dependencies:
   - name: com.unity.modules.director
@@ -3038,6 +3046,7 @@ m_ResolvedPackages:
     - 7.0.8
     - 7.0.9
     - 7.0.10
+    - 7.0.11
     - 8.0.0-pre.3
     - 8.0.0-pre.4
     - 8.0.0
@@ -3051,12 +3060,16 @@ m_ResolvedPackages:
     - 9.0.0
     - 9.0.1
     - 9.0.2
+    - 9.0.3
     - 10.0.0-pre.1
     - 10.0.0-pre.2
     - 10.0.0
+    - 10.0.1
+    - 10.0.2
     compatible:
     - 7.0.10
-    verified: 7.0.10
+    - 7.0.11
+    verified: 7.0.11
   dependencies:
   - name: com.unity.2d.common
     version: 6.0.6
@@ -3493,6 +3506,7 @@ m_ResolvedPackages:
     - 10.0.0-pre.1
     - 10.0.0-pre.2
     - 10.0.0
+    - 10.0.1
     compatible:
     - 7.0.7
     verified: 7.0.7
@@ -3671,6 +3685,7 @@ m_ResolvedPackages:
     - 4.0.0-pre.2
     - 4.0.0-pre.3
     - 4.0.0
+    - 4.0.1
     compatible:
     - 2.2.5
     verified: 2.2.5
@@ -3856,6 +3871,7 @@ m_ResolvedPackages:
     - 9.0.0-pre.1
     - 9.0.0-pre.2
     - 9.0.0
+    - 9.0.1
     compatible:
     - 6.0.6
     verified: 6.0.6
